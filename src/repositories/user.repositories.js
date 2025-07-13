@@ -10,7 +10,7 @@ db.run(`
     )
 `);
 
-function creatUserRepository(newUser) {
+function createUserRepository(newUser) {
     return new Promise((res, rej) => {
         const {username, email, password, avatar } = newUser;
         db.run(
@@ -23,7 +23,7 @@ function creatUserRepository(newUser) {
                 if (err) {
                     rej(err)
                 } else {
-                    res({message: 'User created'})
+                    res({id: this.lastID, ...newUser})
                 }
             }
         );
